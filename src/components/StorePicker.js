@@ -3,7 +3,7 @@ import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
 
-  goToStore(event) {
+  goToStore = (event) => {
     event.preventDefault();
     // capture storeId
     const storeId = this.storeInput.value;

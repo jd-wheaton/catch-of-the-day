@@ -6,12 +6,6 @@ import base from '../base';
 class Inventory extends React.Component {
   constructor() {
     super();
-    this.renderInventory = this.renderInventory.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.authenticate = this.authenticate.bind(this);
-    this.authHandler = this.authHandler.bind(this);
-    this.renderLogin = this.renderLogin.bind(this);
-    this.logout = this.logout.bind(this);
     this.state = {
       uid: null,
       owner: null
@@ -26,7 +20,7 @@ class Inventory extends React.Component {
     });
   }
 
-  handleChange(e, key) {
+  handleChange = (e, key) => {
     const fish = this.props.fishes[key];
     const updatedFish = {
       ...fish,
@@ -35,11 +29,11 @@ class Inventory extends React.Component {
     this.props.updateFish(key, updatedFish);
   }
 
-  authenticate(provider) {
+  authenticate = (provider) => {
     base.authWithOAuthPopup(provider, this.authHandler);
   }
 
-  authHandler(err, authData) {
+  authHandler = (err, authData) => {
     if(err) {
       console.error(err);
       return;
@@ -66,7 +60,7 @@ class Inventory extends React.Component {
     });
   }
 
-  logout() {
+  logout = () => {
     base.unauth();
     this.setState({
       uid: null,
@@ -74,7 +68,7 @@ class Inventory extends React.Component {
     });
   }
 
-  renderLogin() {
+  renderLogin = () => {
     return (
       <nav className="login">
         <h2>Inventory</h2>
@@ -84,7 +78,7 @@ class Inventory extends React.Component {
     )
   }
 
-  renderInventory(key) {
+  renderInventory = (key) => {
     const fish = this.props.fishes[key];
     return (
       <div className="fish-edit" key={key}>
